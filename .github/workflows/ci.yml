@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install NumPy
+        run: pip install numpy
+      - name: Run Python MLX-Tree Suite
+        run: PYTHONPATH=src python3 -m unittest discover -s tests -v
+      - name: Run Rust Core Check & Tests
+        run: cargo test
