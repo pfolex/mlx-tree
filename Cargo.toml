@@ -1,0 +1,11 @@
+[package]
+name = "mlx_tree_core"
+version = "0.1.0"
+edition = "2021"
+description = "Radix-tree prefix matcher and Copy-on-Write KV-cache block table allocator for tree rollouts"
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "mlx_tree_core"
+path = "rust/src/lib.rs"
+crate-type = ["cdylib", "rlib"]
